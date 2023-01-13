@@ -1,0 +1,33 @@
+.card{
+    border: 1px solid salmon;
+    border-radius: 0.5em;
+    display: flex;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.profilePicLeft{
+    align-items: center;
+    flex:1;
+    display: flex;
+}
+
+.profilePic{
+    height: 150px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.cardDetails{
+    flex: 1;
+}
+
+.cardFavourite{
+    
+    border: 1px solid salmon;
+    border-radius: 0.5em;
+    display: flex;
+    padding: 8px;
+    cursor: pointer;
+    background-color: rgba(250, 128, 114, 0.251);
+}

@@ -1,4 +1,4 @@
-import './ProfileInfo.css'
+import styles from './ProfileInfo.module.css';
 import { PropTypes } from 'prop-types'
 
 function ProfileInfo(props) {
@@ -7,16 +7,20 @@ function ProfileInfo(props) {
         age,
         bio,
         intrests } = props.userInformation;
+    const displaySummary = (message) => {
+        alert(`${name} is ${age} years old - ${message}`);
+    }
     return (
         <>
-            <div className='profile-pic-container'>
+            <div className={styles.profilePicContainer}>
                 <img
                     src={profilePicUrl}
                     alt={`${name} smiling`}
-                    className='profile-pic-image'
+                    className={styles.profilePicImage}
                 ></img>
             </div>
-            <h2 className="content-heading">
+            <button onClick={() => displaySummary('Hi there')}>Display Summary</button>
+            <h2 className={styles.contentHeading}>
                 My Profile
             </h2>
             <h3>Name</h3>
@@ -30,6 +34,7 @@ function ProfileInfo(props) {
             <ul>
                 <li>Programming</li>
             </ul>
+
         </>
     );
 }

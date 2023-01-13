@@ -12,3 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button{
+  background-color: salmon;
+  color: #141313;
+  border: none;
+  border-radius: 0.1em;
+  cursor: pointer;
+  padding: 0.2em;
+  font-weight: bold;
+}
