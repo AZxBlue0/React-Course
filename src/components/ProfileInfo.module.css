@@ -13,8 +13,10 @@
 }
 
 h3{
-    border-bottom: 1px solid rgb(173, 56, 72);
-    color: rgb(173, 56, 72);
+    background-color: var(--itemBg);
+    box-shadow: 0 4px 10px var(--shadowColor);
+    color: var(--accent2);
+    padding: 1em;
 }
 
 .contentHeading{

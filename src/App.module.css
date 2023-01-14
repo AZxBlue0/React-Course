@@ -1,6 +1,11 @@
 .contentContainer {
   margin: auto;
+  margin-top: 3em;
+  margin-bottom: 3em;
   max-width: 700px;
+  box-shadow: 0 4px 10px var(--shadowColor);
+  padding: 1em;
+  background-color: var(--containerBg);
 }
 
 .scrolling-container{
@@ -10,7 +15,8 @@
 }
 
 .border-container{
-  border: 2px solid salmon;
+  background-color: var(--itemBg);
+  box-shadow: 0 4px 10px var(--shadowColor);
   max-width: 700px;
   padding: 16px;
   margin: auto;
@@ -18,11 +24,5 @@
 
 .narrow-container{
   max-width:300px;
-}
-
-.contentHeading{
-  border-bottom: 1px dotted salmon;
-  margin: 0.5em 0;
-  text-transform: uppercase;
 }
 

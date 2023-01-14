@@ -1,0 +1,8 @@
+
+.contentHeading{
+    border-bottom: 1px dotted var(--accent1);
+    color: var(--accent1);
+    margin: 0.5em 0;
+    text-transform: uppercase;
+  }
+  

@@ -1,0 +1,8 @@
+.tag {
+    background-color: var(--accent3);
+    box-shadow: 0 4px 10px var(--shadowColor);
+    padding: 0.2em;
+    display: inline;
+    font-weight: bold;
+    margin-left: 0.2em;
+}

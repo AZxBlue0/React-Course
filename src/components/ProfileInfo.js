@@ -1,5 +1,6 @@
 import styles from './ProfileInfo.module.css';
 import { PropTypes } from 'prop-types'
+import { Tag } from './Tag';
 
 function ProfileInfo(props) {
     const { profilePicUrl,
@@ -30,10 +31,7 @@ function ProfileInfo(props) {
             <h3>Bio</h3>
             <p>{bio}</p>
             <h3>Intrests</h3>
-            <p>{intrests.join(', ')}</p>
-            <ul>
-                <li>Programming</li>
-            </ul>
+            {intrests.map(intrest => <Tag key ={intrest} text={intrest} />)}
 
         </>
     );

@@ -1,11 +1,21 @@
+:root {
+  --bgColor: #25182c;
+  --fontColor: #fcf9ff;
+  --containerBg: #1e201f;
+  --itemBg: #2d2d2d;
+  --shadowColor: #0e0d13;
+  --accent1: #db719c;
+  --accent2: #d63b6f;
+  --accent3: #d81b4f;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #141313;
-  color: #EEE;
-  text-shadow: 0px 0px 2px currentColor;
+  background-color: var(--bgColor);
+  color: var(--fontColor);
 }
 
 code {
@@ -13,12 +23,18 @@ code {
     monospace;
 }
 
-button{
-  background-color: salmon;
-  color: #141313;
+button {
+  background-color: var(--accent2);
+  color: var(--fontColor);
   border: none;
   border-radius: 0.1em;
   cursor: pointer;
-  padding: 0.2em;
+  padding: 0.5em;
   font-weight: bold;
+  box-shadow: 0 4px 10px var(--shadowColor);
+  transition: 500ms;
+}
+
+button:hover {
+  background-color: var(--accent3);
 }

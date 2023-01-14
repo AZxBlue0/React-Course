@@ -1,0 +1,8 @@
+.welcomeMessage {
+    background-color: var(--itemBg);
+    box-shadow: 0 4px 10px var(--shadowColor);
+    color: var(--accent2);
+    padding: 2em;
+    text-align: center;
+    margin-bottom: 1em;
+}

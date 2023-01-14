@@ -1,0 +1,23 @@
+.navBar{
+ align-items: center;
+ display: flex;
+ justify-content: space-between;
+ padding: 0 0.2em;   
+ background-color: var(--containerBg);
+ box-shadow: 0 4px 10px var(--shadowColor);
+}
+
+.siteHeading{
+    color: var(--accent2);
+    display: inline-block;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    padding: 0.1em;
+    border-top: 2px solid var(--accent2);
+    border-bottom: 2px solid var(--accent2);
+}
+
+.profileButton {
+    float: right;
+    margin-right: 2em;
+}
