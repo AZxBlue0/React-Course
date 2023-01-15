@@ -7,29 +7,40 @@ const PersonCard = ({
         profilePicUrl,
         name,
         age
-    }, isFavourite,
-    onCardClicked
+    },
+    onCardClicked,
+    onAction = () => { },
+    actionName
 }) => {
 
 
     return (
-        <div
-        onClick={() =>onCardClicked(id)}
-        className={styles.card}>
-            <div className={styles.profilePicLeft}>
-                <img
-                    className={styles.profilePic}
-                    src = {profilePicUrl}
-                    alt = {`${name}`}
-                />
+        <>
+            <div
+                onClick={() => onCardClicked(id)}
+                className={styles.card}>
+                <div className={styles.profilePicLeft}>
+                    <img
+                        className={styles.profilePic}
+                        src={profilePicUrl}
+                        alt={`${name}`}
+                    />
+                </div>
+                <div className={styles.cardDetails}>
+                    <h2>Name</h2>
+                    <p>{name}</p>
+                    <h2>Age</h2>
+                    <p>{age}</p>
+                </div>
+                {actionName && onAction ? <button onClick={(e) => {
+                    onAction(id);
+                    e.stopPropagation();
+                }}
+                    className={styles.actionButton}>
+                    {actionName}
+                </button> : ''}
             </div>
-            <div className={styles.cardDetails}>
-                <h3>Name</h3>
-                <p>{name}</p>
-                <h3>Age</h3>
-                <p>{age}</p>
-            </div>
-        </div>
+        </>
     )
 }
 

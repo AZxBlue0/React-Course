@@ -2,12 +2,15 @@ import styles from './ProfileInfo.module.css';
 import { PropTypes } from 'prop-types'
 import { Tag } from './Tag';
 
-function ProfileInfo(props) {
-    const { profilePicUrl,
+function ProfileInfo({
+    userInformation: { profilePicUrl,
         name,
         age,
         bio,
-        intrests } = props.userInformation;
+        intrests },
+    onToggleFavourite = () => { }
+}) {
+
     const displaySummary = (message) => {
         alert(`${name} is ${age} years old - ${message}`);
     }
@@ -31,8 +34,8 @@ function ProfileInfo(props) {
             <h3>Bio</h3>
             <p>{bio}</p>
             <h3>Intrests</h3>
-            {intrests.map(intrest => <Tag key ={intrest} text={intrest} />)}
-
+            {intrests.map(intrest => <Tag key={intrest} text={intrest} />)}
+            <button className={styles.actionButton} onClick={onToggleFavourite}>Toggle Favourite</button>
         </>
     );
 }

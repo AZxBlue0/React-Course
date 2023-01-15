@@ -1,4 +1,4 @@
-.profilePicContainer{
+.profilePicContainer {
     overflow: hidden;
     margin: auto;
     border-radius: 100%;
@@ -8,17 +8,22 @@
     background-color: #333;
 }
 
-.profilePicImage{
+.profilePicImage {
     width: 100%;
 }
 
-h3{
+h3 {
     background-color: var(--itemBg);
     box-shadow: 0 4px 10px var(--shadowColor);
     color: var(--accent2);
     padding: 1em;
 }
 
-.contentHeading{
+.contentHeading {
     text-transform: uppercase;
+}
+
+.actionButton {
+    margin-top: 1em;
+    width: 100%;
 }

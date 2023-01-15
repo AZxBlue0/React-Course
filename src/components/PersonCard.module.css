@@ -1,33 +1,32 @@
-.card{
-    border: 1px solid salmon;
-    border-radius: 0.5em;
+.card {
+    border: 1px solid var(--accent3);
+    background-color: var(--itemBg);
     display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 8px;
     cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadowColor);
 }
 
-.profilePicLeft{
+.profilePicLeft {
     align-items: center;
-    flex:1;
+    flex: 1;
     display: flex;
+    box-shadow: 0 4px 10px var(--shadowColor);
 }
 
-.profilePic{
+.profilePic {
     height: 150px;
     width: auto;
-    border-radius: 50%;
+    border: 1px solid var(--accent3);
 }
 
-.cardDetails{
+.cardDetails {
     flex: 1;
+    width: 100%;
 }
 
-.cardFavourite{
-    
-    border: 1px solid salmon;
-    border-radius: 0.5em;
-    display: flex;
-    padding: 8px;
-    cursor: pointer;
-    background-color: rgba(250, 128, 114, 0.251);
+.actionButton {
+    width: 100%;
 }
