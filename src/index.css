@@ -38,3 +38,18 @@ button {
 button:hover {
   background-color: var(--accent3);
 }
+
+input,
+textarea {
+  border: 1px solid var(--accent3);
+  color: var(--accent1);
+  background-color: #1e201f;
+  box-shadow: #0e0d13;
+  font-family: 'Roboto', sans-serif;
+  padding: 0.5em;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--accent1)
+}

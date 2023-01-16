@@ -3,14 +3,19 @@ import { PropTypes } from 'prop-types'
 import { useState } from 'react'
 
 const WelcomeMessage = ({ name }) => {
-    const [isVisible, setIsVisible] = useState(true)
+    const hasBeenHidden = localStorage.getItem('welcomeMessageHidden');
 
+    const [isVisible, setIsVisible] = useState(!hasBeenHidden)
 
-
+    const hide = () => {
+        localStorage.setItem('welcomeMessageHidden', true);
+        setIsVisible(false);
+    }
+    
     return isVisible ? (
         <div className={styles.welcomeMessage}>
             <h2 >Welcome to the Fren tracker smacker, {name}</h2>
-            <button onClick={(() => setIsVisible(false))}>Hide Welcome Message</button>
+            <button onClick={hide}>Hide Welcome Message</button>
         </div>
     ) : null;
 }

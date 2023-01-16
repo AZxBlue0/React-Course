@@ -1,18 +1,18 @@
-
-import { friendsData } from '../data';
 import { PeopleList } from '../components/PeopleList';
 import { useNavigate } from 'react-router-dom'
 import styles from './FriendsPage.module.css'
+import { useContext } from 'react';
+import { FavouritesContext } from '../context/FavouritesContext';
+import { FriendsContext } from '../context/FriendsContext';
 
-const FriendsPage = ({
-    favouriteIds,
-    onToggleFavourite = () => { }
-}) => {
+const FriendsPage = () => {
+    const { favouriteIds, toggleFavourite } = useContext(FavouritesContext);
+    const { friends } = useContext(FriendsContext);
 
     const favourites = favouriteIds.map(id =>
-        friendsData.find(friend => friend.id === id));
+        friends.find(friend => friend.id === id));
 
-    const nonFavourites = friendsData.filter(
+    const nonFavourites = friends.filter(
         friend => !favouriteIds.find(id => friend.id === id));
 
 
@@ -30,15 +30,16 @@ const FriendsPage = ({
             <PeopleList
                 people={favourites}
                 onClickPerson={goToPersonDetail}
-                onPersonAction={onToggleFavourite}
+                onPersonAction={toggleFavourite}
                 actionName='Remove from favorites'
             />
             <h2 className={styles.contentHeading}>Frens</h2>
             <PeopleList
                 people={nonFavourites}
                 onClickPerson={goToPersonDetail}
-                onPersonAction={onToggleFavourite}
+                onPersonAction={toggleFavourite}
                 actionName='Add to favorites'
+                allowAdditions
             />
         </>
     )

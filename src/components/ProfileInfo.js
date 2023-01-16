@@ -8,12 +8,9 @@ function ProfileInfo({
         age,
         bio,
         intrests },
-    onToggleFavourite = () => { }
+    onToggleFavourite
 }) {
 
-    const displaySummary = (message) => {
-        alert(`${name} is ${age} years old - ${message}`);
-    }
     return (
         <>
             <div className={styles.profilePicContainer}>
@@ -23,7 +20,6 @@ function ProfileInfo({
                     className={styles.profilePicImage}
                 ></img>
             </div>
-            <button onClick={() => displaySummary('Hi there')}>Display Summary</button>
             <h2 className={styles.contentHeading}>
                 My Profile
             </h2>
@@ -35,7 +31,7 @@ function ProfileInfo({
             <p>{bio}</p>
             <h3>Intrests</h3>
             {intrests.map(intrest => <Tag key={intrest} text={intrest} />)}
-            <button className={styles.actionButton} onClick={onToggleFavourite}>Toggle Favourite</button>
+            {onToggleFavourite && <button className={styles.actionButton} onClick={onToggleFavourite}>Toggle Favourite</button>}
         </>
     );
 }
@@ -47,6 +43,7 @@ ProfileInfo.propTypes = {
         bio: PropTypes.string,
         intrests: PropTypes.arrayOf(PropTypes.string).isRequired
     }).isRequired,
+    onToggleFavourite: PropTypes.func
 }
 
 export { ProfileInfo }
