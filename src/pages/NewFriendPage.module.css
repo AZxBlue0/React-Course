@@ -1,0 +1,16 @@
+.contentArea{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.contentArea > input,
+.contentArea > textarea{
+    box-sizing: border-box;
+    margin-bottom: 1em!important;
+    font-size: 1em;
+}
+
+.contentArea button{
+    margin-top: 2em!important;
+}
