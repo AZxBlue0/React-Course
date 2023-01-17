@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FavouritesContext } from "../context/FavouritesContext";
 
 const FavouritesProvider = ({ children }) => {
@@ -6,13 +6,16 @@ const FavouritesProvider = ({ children }) => {
 
     const [favouriteIds, setFavouriteIds] = useState(existingState || []);
 
+    useEffect(() => {
+        localStorage.setItem('favouriteIds', JSON.stringify(favouriteIds));
+    }, [favouriteIds]);
+
     const toggleFavourite = personid => {
         let newFavouriteIds = favouriteIds.includes(personid)
             ? favouriteIds.filter(id => id !== personid)
             : favouriteIds.concat(personid);
 
         setFavouriteIds(newFavouriteIds);
-        localStorage.setItem('favouriteIds', JSON.stringify(newFavouriteIds));
     }
 
     return (

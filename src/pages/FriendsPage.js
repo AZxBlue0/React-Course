@@ -2,6 +2,7 @@ import { PeopleList } from '../components/PeopleList';
 import { useNavigate } from 'react-router-dom'
 import styles from './FriendsPage.module.css'
 import { useContext } from 'react';
+import { useEffect } from 'react';
 import { FavouritesContext } from '../context/FavouritesContext';
 import { FriendsContext } from '../context/FriendsContext';
 
@@ -14,7 +15,10 @@ const FriendsPage = () => {
 
     const nonFavourites = friends.filter(
         friend => !favouriteIds.find(id => friend.id === id));
-
+    
+    useEffect(() => {
+        console.log('Friends Page Effect function called');
+    });
 
     const navigate = useNavigate();
 

@@ -13,7 +13,7 @@ const PeopleList = ({
 }) => {
 
     const navigate = useNavigate();
-    console.log(people);
+    
     return (
         <div className={styles.peopleList}>
             {people.map(person => (

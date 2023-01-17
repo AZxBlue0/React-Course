@@ -8,7 +8,7 @@ function ProfileInfo({
         age,
         bio,
         intrests },
-    onToggleFavourite
+    actions = []
 }) {
 
     return (
@@ -31,7 +31,11 @@ function ProfileInfo({
             <p>{bio}</p>
             <h3>Intrests</h3>
             {intrests.map(intrest => <Tag key={intrest} text={intrest} />)}
-            {onToggleFavourite && <button className={styles.actionButton} onClick={onToggleFavourite}>Toggle Favourite</button>}
+            {
+                actions.map(action => (
+                    <button key = {action.name} className={styles.actionButton} onClick={action.handler}>{action.name}</button>
+                ))
+            }
         </>
     );
 }

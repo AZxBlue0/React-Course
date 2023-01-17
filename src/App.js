@@ -7,6 +7,7 @@ import { NavBar } from './components/NavBar';
 import { FavouritesProvider } from './components/FavouritesProvider';
 import { NewFriendPage } from './pages/NewFriendPage';
 import { FriendsProvider } from './components/FriendsProvider';
+import { EditFriendPage } from './pages/EditFirendPage';
 
 export function App() {
   return (
@@ -20,6 +21,7 @@ export function App() {
               <Route path="/friends/:friendId" element={<FriendDeatailPage />} />
               <Route path="/user-profile" element={< UserProfilePage />} />
               <Route path="/new-friend" element={< NewFriendPage />} />
+              <Route path="/edit-friend/:friendId" element={< EditFriendPage />} />
             </Routes>
           </div>
         </FriendsProvider>
