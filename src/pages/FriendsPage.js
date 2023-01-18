@@ -4,16 +4,15 @@ import styles from './FriendsPage.module.css'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addFavorite, removeFavorite } from '../actions/favorites';
-import { getFavorites } from '../selectors/favorites';
+import {  getFavorites, getNonFavorites } from '../selectors/favorites';
 
 const FriendsPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const favourites = useSelector(state => getFavorites(state));
+    const favourites = useSelector(getFavorites);
 
-    const nonFavourites = useSelector(state => state.friends.filter(friend =>
-        !state.favorites.find(id => friend.id === id)));
+    const nonFavourites = useSelector(getNonFavorites);
 
     useEffect(() => {
         console.log('Friends Page Effect function called');
