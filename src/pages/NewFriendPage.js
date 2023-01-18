@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid"
 import { addFriend } from "../actions/friends";
 
 const NewFriendPage = () => {
+    console.log('newFriendPage Rendering');
     const navigate = useNavigate();
     const dispatch = useDispatch();
 

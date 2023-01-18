@@ -7,6 +7,7 @@ import { getFriendById } from "../selectors/friends"
 import { getIsFavorite } from "../selectors/favorites"
 
 const FriendDeatailPage = () => {
+    console.log('friendPage rendering');
     const { friendId } = useParams();
     const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ const FriendDeatailPage = () => {
     }
 
     const isFavourite = useSelector(state => getIsFavorite(friendId, state));
-    const selectedFriend = useSelector(state => getFriendById(friendId, state));
+    const selectedFriend = useSelector(getFriendById(friendId));
 
     const navigate = useNavigate();
 

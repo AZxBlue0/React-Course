@@ -1,20 +1,19 @@
+//import { connect } from "react-redux";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { PersonInfoForm } from "../components/PersonInfoForm";
 import { editFriend } from '../actions/friends'
-import { getFriends } from "../selectors/friends";
+import { getFriendById } from "../selectors/friends";
 
 const EditFriendPage = () => {
+    console.log('editFriendPage');
     const { friendId } = useParams();
-
-    const friends = useSelector(getFriends);
     const dispatch = useDispatch();
-
     const navigate = useNavigate();
-    const selectedFriend = friends.find(f => f.id === friendId);
+    const selectedFriend = useSelector(getFriendById(friendId));
 
     const saveUpdatedInformation = updatedInfo => {
-        dispatch(editFriend( updatedInfo, friendId));
+        dispatch(editFriend(updatedInfo, friendId));
         navigate('/');
     }
 
@@ -29,5 +28,21 @@ const EditFriendPage = () => {
         </>
     )
 }
+
+// const mapStateToProps = state => ({
+//     friends: getFriends(state),
+// });
+
+// const mapDispatchToProps = dispatch => ({
+//     editFriend: (updatedInfo, friendId) => dispatch(editFriend( updatedInfo, friendId));
+// });
+
+// const EditFriendPageConn = connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )(EditFriendPage);
+
+//if you do this you have to connect CONN component.
+//We usually change EditFriendPage to EditFriendPageBase so not to use the Conn suffix
 
 export { EditFriendPage }

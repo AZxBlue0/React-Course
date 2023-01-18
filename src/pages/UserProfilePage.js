@@ -7,6 +7,7 @@ import { updateProfile } from '../actions/profile';
 import { getProfileInfo } from '../selectors/profile';
 
 const UserProfilePage = () => {
+    console.log('userProfilePage Rendering');
     const userInfo = useSelector(getProfileInfo);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -15,7 +16,6 @@ const UserProfilePage = () => {
     const updateUserInfo = updatedInfo => {
         dispatch(updateProfile(updatedInfo));
         setIsEditing(false);
-
     }
 
     const actions = [{

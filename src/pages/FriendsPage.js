@@ -7,6 +7,7 @@ import { addFavorite, removeFavorite } from '../actions/favorites';
 import {  getFavorites, getNonFavorites } from '../selectors/favorites';
 
 const FriendsPage = () => {
+    console.log('Freind Page rendering');
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
