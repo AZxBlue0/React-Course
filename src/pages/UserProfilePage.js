@@ -1,18 +1,21 @@
 import { useState } from 'react';
-import { myProfileData as startingInfo } from '../data';
 import { WelcomeMessage } from '../components/WelcomeMessage';
 import { ProfileInfo } from '../components/ProfileInfo';
 import { PersonInfoForm } from '../components/PersonInfoForm';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateProfile } from '../actions/profile';
+import { getProfileInfo } from '../selectors/profile';
 
 const UserProfilePage = () => {
-    const existingInfo = JSON.parse(localStorage.getItem('userInfo'))
+    const userInfo = useSelector(getProfileInfo);
     const [isEditing, setIsEditing] = useState(false);
-    const [userInfo, setUserInfo] = useState(existingInfo || startingInfo);
+
+    const dispatch = useDispatch();
 
     const updateUserInfo = updatedInfo => {
-        setUserInfo(updatedInfo);
-        localStorage.setItem('userInfo', JSON.stringify(updatedInfo));
+        dispatch(updateProfile(updatedInfo));
         setIsEditing(false);
+
     }
 
     const actions = [{

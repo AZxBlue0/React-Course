@@ -1,20 +1,19 @@
-import { FriendsContext } from "../context/FriendsContext"
 import { PersonInfoForm } from "../components/PersonInfoForm";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
 import { v4 as uuid } from "uuid"
+import { addFriend } from "../actions/friends";
 
 const NewFriendPage = () => {
     const navigate = useNavigate();
-
-    const { addFriend } = useContext(FriendsContext);
+    const dispatch = useDispatch();
 
     const onFormSubmit = friendInfo => {
         const newFriend = {
             ...friendInfo,
-            id: uuid
+            id: uuid()
         }
-        addFriend(newFriend);
+        dispatch(addFriend(newFriend));
         navigate('/');
     }
 
