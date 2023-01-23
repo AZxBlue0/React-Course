@@ -9,7 +9,7 @@ const PersonCard = ({
         age
     },
     onCardClicked,
-    onAction = () => { },
+    onAction,
     actionName
 }) => {
 
@@ -18,7 +18,9 @@ const PersonCard = ({
         <>
             <div
                 onClick={() => onCardClicked(id)}
-                className={styles.card}>
+                className={styles.card}
+                role="listitem"
+                >
                 <div className={styles.profilePicLeft}>
                     <img
                         className={styles.profilePic}

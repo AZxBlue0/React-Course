@@ -15,7 +15,7 @@ const PeopleList = ({
     const navigate = useNavigate();
     
     return (
-        <div className={styles.peopleList}>
+        <div className={styles.peopleList} >
             {people.map(person => (
                 <div key={person.id} className={styles.peopleListItem}>
                     <PersonCard
