@@ -1,14 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { PersonCard } from "./PersonCard";
+import { fakePerson } from '../test-utils/fakes';
 
-const fakePerson = {
-    id: '1',
-    name: 'Aubrey Long',
-    profilePicUrl: `${process.env.PUBLIC_URL}/fren1.jpg`,
-    age: 40,
-    bio: 'likes to eat',
-    intrests: ['Cats', 'Dogs', 'Food']
-}
 
 test('PersonCard component displays persons information correctly', () => {
     render(<PersonCard person={fakePerson} />);
