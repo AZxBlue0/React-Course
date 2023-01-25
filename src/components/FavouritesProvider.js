@@ -1,25 +1,32 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { FavouritesContext } from "../context/FavouritesContext";
 
 const FavouritesProvider = ({ children }) => {
-    const existingState = JSON.parse(localStorage.getItem('favouriteIds'));
+    const [isLoading, setIsLoading] = useState(true);
 
-    const [favouriteIds, setFavouriteIds] = useState(existingState || []);
+    const [favouriteIds, setFavouriteIds] = useState([]);
 
     useEffect(() => {
-        localStorage.setItem('favouriteIds', JSON.stringify(favouriteIds));
-    }, [favouriteIds]);
+        const loadFavorites = async () => {
+            const response = await axios.get('/favorites');
+            setFavouriteIds(response.data);
+            setIsLoading(false);
+        }
+        loadFavorites();
+    }, []);
 
     const toggleFavourite = personid => {
-        let newFavouriteIds = favouriteIds.includes(personid)
-            ? favouriteIds.filter(id => id !== personid)
-            : favouriteIds.concat(personid);
+        // let newFavouriteIds = favouriteIds.includes(personid)
+        //     ? favouriteIds.filter(id => id !== personid)
+        //     : favouriteIds.concat(personid);
 
-        setFavouriteIds(newFavouriteIds);
+        // setFavouriteIds(newFavouriteIds);
+        alert('Not Implemented yet');
     }
 
     return (
-        <FavouritesContext.Provider value={{ favouriteIds, toggleFavourite }}>
+        <FavouritesContext.Provider value={{ favouriteIds, toggleFavourite, isLoading }}>
             {children}
         </FavouritesContext.Provider>
     )

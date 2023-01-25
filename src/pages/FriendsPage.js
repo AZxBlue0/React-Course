@@ -7,15 +7,15 @@ import { FavouritesContext } from '../context/FavouritesContext';
 import { FriendsContext } from '../context/FriendsContext';
 
 const FriendsPage = () => {
-    const { favouriteIds, toggleFavourite } = useContext(FavouritesContext);
-    const { friends } = useContext(FriendsContext);
-
+    const { isLoading: isLoadingFavorites, favouriteIds, toggleFavourite } = useContext(FavouritesContext);
+    const { isLoading: isLoadingFriends, friends } = useContext(FriendsContext);
+    const isLoading = isLoadingFavorites || isLoadingFriends;
     const favourites = favouriteIds.map(id =>
         friends.find(friend => friend.id === id));
 
     const nonFavourites = friends.filter(
         friend => !favouriteIds.find(id => friend.id === id));
-    
+
     useEffect(() => {
         console.log('Friends Page Effect function called');
     });
@@ -26,7 +26,7 @@ const FriendsPage = () => {
         navigate(`/friends/${personId}`);
     }
 
-    return (
+    return isLoading ? <p>Loading ...</p> : (
         <>
             <div className={styles.contentHeading}> My frens </div>
             <p>You have {favouriteIds.length} {favouriteIds.length === 1 ? 'friend' : 'friends'}</p>

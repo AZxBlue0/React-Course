@@ -1,33 +1,45 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { FriendsContext } from '../context/FriendsContext';
-import { friendsData as starterFriends } from '../data';
 
 const FriendsProvider = ({ children }) => {
-    const existingState = JSON.parse(localStorage.getItem('friends'));
+    const [friends, setFriends] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
 
-    const [friends, setFriends] = useState(existingState || starterFriends);
-
-    useEffect(() => { 
-        localStorage.setItem('friends', JSON.stringify(friends));
-    }, [friends])
+    useEffect(() => {
+        const loadFriends = async () => {
+            const response = await axios.get('/friends');
+            setFriends(response.data);
+            setIsLoading(false);
+        }
+        loadFriends();
+    }, [])
 
     const addFriend = friend => {
-        const newFriends = friends.concat(friend);
-        setFriends(newFriends);
+        // const newFriends = friends.concat(friend);
+        // setFriends(newFriends);
+        alert("Not implemented yet");
+    }
+
+    const removeFriend = friendId => {
+        // const newFriends = friends.concat(friend);
+        // setFriends(newFriends);
+        alert("Not implemented yet");
     }
 
     const updateFriend = updatedInfo => {
-        const updatedFriends = friends.map(friend => {
-            if (friend.id === updatedInfo.id) {
-                return updatedInfo;
-            }
-            return friend;
-        })
-        setFriends(updatedFriends);
+        // const updatedFriends = friends.map(friend => {
+        //     if (friend.id === updatedInfo.id) {
+        //         return updatedInfo;
+        //     }
+        //     return friend;
+        // })
+        // setFriends(updatedFriends);
+        alert('Not implemented yet');
     }
 
     return (
-        <FriendsContext.Provider value={{ friends, addFriend, updateFriend }}>
+        <FriendsContext.Provider value={{ friends, addFriend, updateFriend, removeFriend, isLoading }}>
             {children}
         </FriendsContext.Provider>
     )

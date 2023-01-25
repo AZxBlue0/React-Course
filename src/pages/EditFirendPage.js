@@ -5,7 +5,7 @@ import { PersonInfoForm } from "../components/PersonInfoForm";
 
 const EditFriendPage = () => {
     const { friendId } = useParams();
-    const { friends } = useContext(FriendsContext);
+    const { isLoading, friends } = useContext(FriendsContext);
     const { updateFriend } = useContext(FriendsContext);
     const navigate = useNavigate();
     const selectedFriend = friends.find(f => f.id === friendId);
@@ -17,7 +17,7 @@ const EditFriendPage = () => {
         navigate('/');
     }
 
-    return (
+    return isLoading ? <p>Loading ..</p> : (
         <>
             <h1>Edit friend</h1>
             <PersonInfoForm

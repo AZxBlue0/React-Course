@@ -1,19 +1,34 @@
 import { useParams } from "react-router-dom"
 import { ProfileInfo } from "../components/ProfileInfo"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { FavouritesContext } from "../context/FavouritesContext"
-import { FriendsContext } from "../context/FriendsContext"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const FriendDeatailPage = () => {
 
     const { favouriteIds, toggleFavourite } = useContext(FavouritesContext);
-    const { friends } = useContext(FriendsContext);
     const { friendId } = useParams();
-    const navigate = useNavigate();
-    const isFavourite = favouriteIds.includes(friendId);
+    const [friend, setFriend] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const isFavourite = friend && favouriteIds.includes(friend.id);
 
-    const selectedFriend = friends.find(friend => friend.id === friendId);
+    useEffect(() => {
+        const loadFriend = async () => {
+            try {
+                const response = await axios.get(`/friends/${friendId}`);
+                setFriend(response.data);
+                setIsLoading(false);
+            } catch(e) {
+                console.log(e)
+                setIsLoading(false)
+            }
+        }
+
+        loadFriend();
+    }, [friendId]);
+
+    const navigate = useNavigate();
 
     const pageActions = [
         {
@@ -26,10 +41,14 @@ const FriendDeatailPage = () => {
         }
     ]
 
-    return selectedFriend ? (
+    if (isLoading) {
+        return <p>Loading...</p>
+    }
+
+    return friend ? (
         <>
             <ProfileInfo
-                userInformation={selectedFriend}
+                userInformation={friend}
                 actions={pageActions}
             />
             {isFavourite ? <b>She fav</b> : ""}
