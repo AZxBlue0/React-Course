@@ -30,6 +30,7 @@ function ProfileInfo({
             <h3>Bio</h3>
             <p>{bio}</p>
             <h3>Intrests</h3>
+            {intrests.length === 0 && 'This person has no intrest in u'}
             {intrests.map(intrest => <Tag key={intrest} text={intrest} />)}
             {
                 actions.map(action => (

@@ -6,18 +6,18 @@ export const widthConstraintDecorator = (Story, { args, argTypes }) => {
     )
 }
 
-export const widthConstraintArgTypes = {
+export const widthConstraintArgTypes =(minValue, maxValue)=> ({
     containerWidth: {
         control: {
             type: 'range',
-            min: 400,
-            max: 800,
+            min: minValue,
+            max: maxValue,
             step: 100,
         }
     }
-}
+})
 
 
-export const widthConstraintArgs = {
-    containerWidth: 400,
-}
+export const widthConstraintArgs = (startingWidth) => ({
+    containerWidth: startingWidth,
+})

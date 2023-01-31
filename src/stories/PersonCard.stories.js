@@ -7,11 +7,11 @@ export default {
     title: 'atoms/PersonCard',
     decorators : [widthConstraintDecorator],
     args: {
-        ...widthConstraintArgs,
+        ...widthConstraintArgs(400),
         person: 'Person 1'
     },
     argTypes: {
-        ...widthConstraintArgTypes,
+        ...widthConstraintArgTypes(400, 800),
         person: {
             control: {
                 type: 'select'
